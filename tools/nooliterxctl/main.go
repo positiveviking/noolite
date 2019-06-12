@@ -38,13 +38,13 @@ var (
 
 func openDev() {
 	if e, err := rx.NewRxEngine(); err != nil {
-		log.Printf("Device open filed: %v \n", err)
+		log.Printf("Device open failed: %v \n", err)
 	} else {
 		engine = e
 	}
 	err := engine.Open()
 	if err != nil {
-		log.Printf("Device open filed: %v \n", err)
+		log.Printf("Device open failed: %v \n", err)
 		return
 	}
 	log.Println("Device opened")
