@@ -1,5 +1,7 @@
 #include <libusb-1.0/libusb.h>
 
+#include "rx.h"
+
 #define RX_DEV_VID 0x16c0 //0x5824
 #define RX_DEV_PID 0x05df //0x1503
 #define RX_DEV_CONFIG 1
@@ -20,15 +22,9 @@ int RX_OPEN_BUSY = 11;
 int RX_OPEN_CONFIG_ERROR = 12;
 int RX_OPEN_CLAIM_ERROR = 12;
 
-struct RX_open_result
+RX_open_result open_rx()
 {
-    libusb_device_handle *handle;
-    int err_code;
-};
-
-struct RX_open_result open_rx()
-{
-    struct RX_open_result result;
+    RX_open_result result;
     libusb_init(NULL);
 
     libusb_device_handle *handle = libusb_open_device_with_vid_pid(NULL, RX_DEV_VID, RX_DEV_PID);
